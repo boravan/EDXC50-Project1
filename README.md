@@ -4,9 +4,9 @@ Instructions : https://docs.cs50.net/web/2018/x/projects/1/project1.html
 
 Web Programming with Python and JavaScript
 
-=======================
+
 Book review website
-=======================
+
 
 Technologies : 
 Python, Flask, PostgreSQL, Heroku

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  Home page
+{% endblock %}
+
+{% block body %}
+  <p>
+    Je suis dans le home page
+  </p>
+  <a href="{{ url_for('searchRoute') }}"> Search page </a>
+{% endblock %}

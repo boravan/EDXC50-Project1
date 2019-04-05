@@ -24,9 +24,11 @@ db = scoped_session(sessionmaker(bind=engine))
 
 @app.route("/")
 def homeRoute():
-    return render_template("home.html")
+    title = "Home page"
+    return render_template("home.html", headerTitle=title)
 
 
 @app.route("/search")
 def searchRoute():
-    return render_template("search.html")
+    title = "Search page"
+    return render_template("search.html", headerTitle=title)

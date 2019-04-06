@@ -26,9 +26,9 @@ Features :
 
 
 Usage of : 
- - Routes 
- - Inheritence 
- - HTML templating with render_template
+ - Routing
+ - Inheritence of html pages
+ - Templates with render_template
  - Jinja2
  - Linking pages with url_for()
  - Variables to render (like props)

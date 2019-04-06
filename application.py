@@ -28,7 +28,25 @@ def homeRoute():
     return render_template("home.html", headerTitle=title)
 
 
-@app.route("/search")
-def searchRoute():
-    title = "Search page"
-    return render_template("search.html", headerTitle=title)
+@app.route("/login")
+def loginRoute():
+    title = "Login page"
+    return render_template("login.html", headerTitle=title)
+
+
+@app.route("/registration")
+def registrationRoute():
+    title = "Registration page"
+    return render_template("registration.html", headerTitle=title)
+
+
+@app.route("/results")
+def resultsRoute():
+    title = "Results page"
+    return render_template("results.html", headerTitle=title)
+
+
+@app.route("/book")
+def bookRoute():
+    title = "Book page"
+    return render_template("book.html", headerTitle=title)

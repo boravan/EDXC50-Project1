@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {{headerTitle}}
+{% endblock %}
+
+{% block body %}
+ <p>
+   This is the book page
+ </p>
+ <a href="{{ url_for('homeRoute') }}"> Return to home page </a>
+{% endblock %}

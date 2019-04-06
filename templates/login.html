@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {{headerTitle}}
+{% endblock %}
+
+{% block body %}
+  <p>
+    This is the login page
+  </p>
+  <a href="{{ url_for('homeRoute') }}"> Go to home page </a>
+{% endblock %}

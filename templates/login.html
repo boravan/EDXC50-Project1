@@ -1,12 +1,37 @@
 {% extends "layout.html" %}
-
+ 
 {% block header %}
-  {{headerTitle}}
-{% endblock %}
+  {{ headerTitle }}
+{% endblock %} 
 
 {% block body %}
-  <p>
-    This is the login page
-  </p>
-  <a href="{{ url_for('homeRoute') }}"> Go to home page </a>
+<p>
+  This is the login page
+</p>
+<a href="{{ url_for('homeRoute') }}"> Go to home page </a>
+
+<div class="ui middle aligned center aligned grid">
+  <div class="colummn">
+    <form class="ui large form">
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="email" placeholder="E-mail address" />
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password" />
+          </div>
+        </div>
+        <div class="ui fluid large teal submit button">Login</div>
+      </div>
+
+      <div class="ui error message"></div>
+    </form>
+  </div>
+</div>
+
 {% endblock %}

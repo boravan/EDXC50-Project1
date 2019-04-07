@@ -1,7 +1,7 @@
 import os
 import requests
 
-from flask import Flask, session, render_template
+from flask import Flask, session, render_template, request
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -22,10 +22,11 @@ engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
 
-@app.route("/")
+@app.route("/", methods=["POST", "GET"])
 def homeRoute():
+    user = request.form.get("email")
     title = "Home page"
-    return render_template("home.html", headerTitle=title)
+    return render_template("home.html", headerTitle=title, userName=user)
 
 
 @app.route("/login")

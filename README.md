@@ -32,3 +32,4 @@ Usage of :
  - Jinja2
  - Linking pages with url_for()
  - Variables to render (like props)
+ - Request methods

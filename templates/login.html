@@ -1,13 +1,18 @@
-{% extends "layout.html" %} {% block header %}
-{{ headerTitle }}
-{% endblock %} {% block body %}
-<p>
-  This is the login page
-</p>
-<a href="{{ url_for('registrationRoute') }}"> Not yet a member? Registrer</a>
+{% extends "layout.html" %} 
 
+{% block header %}
+  {{ headerTitle }}
+{% endblock %} 
+
+{% block body %}
 <div class="ui middle aligned center aligned grid">
   <div class="colummn">
+    <p>
+      This is the login page
+    </p>
+    <a href="{{ url_for('registrationRoute') }}"> Not yet a member? Registrer</a>
+    <br>
+    <br>
     <form
       class="ui large form"
       action="{{ url_for('homeRoute') }}"

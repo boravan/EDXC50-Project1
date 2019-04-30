@@ -33,3 +33,19 @@ Usage of :
  - Linking pages with url_for()
  - Variables to render (like props)
  - Request methods
+ - Form library : flask_wtf, wtforms
+ - flash (messages)
+ - SQLAlchemy
+
+
+Steps to implement user registration : 
+- Create a new form (class)
+- Create a new route
+- Create a new template
+
+
+Documentation :
+https://www.youtube.com/watch?v=addnlzdSQs4&t=597s
+https://github.com/bradtraversy/myflaskapp
+
+

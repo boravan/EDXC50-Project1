@@ -1,8 +1,8 @@
 import os
-import requests
-
-from flask import Flask, session, render_template, request
+from flask import Flask, session, render_template, flash, redirect, logging, request, url_for
 from flask_session import Session
+from wtforms import Form, StringField, PasswordField, TextAreaField, validators
+from passlib.hash import sha256_crypt
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
@@ -22,11 +22,10 @@ engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
 
-@app.route("/", methods=["POST", "GET"])
+@app.route("/")
 def homeRoute():
-    user = request.form.get("email")
     title = "Home page"
-    return render_template("home.html", headerTitle=title, userName=user)
+    return render_template("home.html", headerTitle=title)
 
 
 @app.route("/login")
@@ -35,10 +34,39 @@ def loginRoute():
     return render_template("login.html", headerTitle=title)
 
 
-@app.route("/registration")
+class RegisterForm(Form):
+    name = StringField('Name', [validators.Length(min=1, max=50)])
+    email = StringField('Email', [validators.Length(min=6, max=50)])
+    username = StringField('Username', [validators.Length(min=1, max=50)])
+    password = PasswordField('Password', [
+        validators.DataRequired(),
+        validators.EqualTo('confirm', message='Password do not match')
+    ])
+    confirm = PasswordField('Confirm Password')
+
+
+@app.route("/registration", methods=["GET", "POST"])
 def registrationRoute():
     title = "Registration page"
-    return render_template("registration.html", headerTitle=title)
+    form = RegisterForm(request.form)
+    if request.method == "POST" and form.validate():
+        name = form.name.data
+        email = form.email.data
+        username = form.username.data
+        password = sha256_crypt.encrypt(str(form.password.data))
+
+        db.execute(
+            "INSERT INTO users (name, email, username, password) VALUES (:n, :e, :u, :p)",
+            {"n": name, "e": email, "u": username, "p": password})
+
+        print("New user created")
+        db.commit()
+
+        flash('You are now registered and can now log in', 'success')
+
+        return redirect(url_for('homeRoute'))
+
+    return render_template("registration.html", headerTitle=title, form=form)
 
 
 @app.route("/results")

@@ -5,29 +5,35 @@
 {% endblock %}
 
 {% block body %}
+  {% from "includes/_formhelpers.html" import render_field %}
+
   <p>
     This is the registration page
   </p>
   <a href="{{ url_for('loginRoute') }}"> Go to login page </a>
   
-  <form class="ui form">
+  <form class="ui form" method="POST", action="">
+
     <div class="inline field">
-      <label>First name</label>
-      <input type="text" name="first-name" placeholder="First name">
+      {{render_field(form.name, class_="form-control")}}
     </div>
     <div class="inline field">
-      <label>Last name</label>
-      <input type="text" name="last-name" placeholder="Last name">
+      {{render_field(form.email, class_="form-control")}}
     </div>
     <div class="inline field">
-      <label>Email</label>
-      <input type="text" name="email" placeholder="Email">
+      {{render_field(form.username, class_="form-control")}}
     </div>
     <div class="inline field">
-      <label>Password</label>
-      <input type="text" name="password" placeholder="Password">
+      {{render_field(form.password, class_="form-control")}}
     </div>
+    <div class="inline field">
+      {{render_field(form.confirm, class_="form-control")}}
+    </div>
+
     <button class="ui buttton" type="submit">Submit</button>
+
+
+
   </form>
   
 {% endblock %}
